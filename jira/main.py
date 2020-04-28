@@ -18,7 +18,8 @@ def issue2shortstr(issue):
 
 def issue2str(issue):
     text = "Issue: " + issue.key
-    text = text + "\nWeb: " + issue.self
+    text = text + "\nAPI: " + issue.self
+    text = text + "\nWeb: " + "{}/browse/{}".format(server, issue.key)
     text = text + "\nSummary: " + issue.fields.summary
     text = text + "\nStatus: " + issue.fields.status.name
     text = text + "\nAssignee: " + issue.fields.assignee.displayName
