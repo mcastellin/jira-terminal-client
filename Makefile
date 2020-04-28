@@ -7,15 +7,15 @@ install:
 		pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
-#lint:
-	#@. ~/.jdbclog/bin/activate &&\
-		#find . -name "*.py" -exec pylint --disable=R,C {} \;
+lint:
+	@. ~/.jiraclient/bin/activate &&\
+		find . -name "*.py" -exec pylint --disable=R,C {} \;
 
-#test:
-	#@. ~/.jdbclog/bin/activate &&\
-		#python -m pytest -vv --cov=parser parser/*_test.py
+test:
+	@. ~/.jiraclient/bin/activate &&\
+		python -m pytest -vv --cov=parser parser/*_test.py
 fmt:
 	@. ~/.jiraclient/bin/activate &&\
 		find . -name "*.py" -exec black {} \;
 
-#all: setup install lint test
+all: setup install lint test

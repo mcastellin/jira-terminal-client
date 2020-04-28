@@ -40,14 +40,15 @@ def show(issue_id):
 
 @cli.command("assigned")
 @click.option(
+    "fq",
     "--filter",
     default=None,
     help="An additional filter query to apply to the jira search",
 )
-def assigned(filter):
+def assigned(fq):
     jql = "assignee=currentUser() AND status != Done"
-    if filter:
-        jql = jql + " AND " + filter
+    if fq:
+        jql = jql + " AND " + fq
 
     for issue in jira.search_issues(jql):
         print(issue2shortstr(issue))
