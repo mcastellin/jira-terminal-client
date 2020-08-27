@@ -1,0 +1,17 @@
+# CI pipeline for jira-terminal-client
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    pip3 install --upgrade pip
+    pip3 install -r requirements.txt
+  displayName: 'Install Python requirements'
+
+- script: |
+    python3 --version
+  displayName: 'Print python version'
