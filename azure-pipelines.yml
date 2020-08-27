@@ -1,19 +1,18 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# CI pipeline for jira-terminal-client
 
 trigger:
-- master
+  pr:
+  - master
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: |
+    pip3 install --upgrade pip
+    pip3 install -r requirements.txt
+  displayName: 'Install Python requirements'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    python3 --version
+  displayName: 'Print python version'
