@@ -1,8 +1,7 @@
 # CI pipeline for jira-terminal-client
 
 trigger:
-  pr:
-  - master
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
