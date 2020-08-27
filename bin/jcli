@@ -1,5 +1,16 @@
 #!/bin/bash 
+BASEDIR="$(dirname "$0")/.."
+VENV=~/.jiraclient/bin/activate
 
-. ~/.jiraclient/bin/activate &&\
-    python jira/main.py $@
+if [[ -f $VENV ]]; then
+    . $VENV > /dev/null &&\
+        python $BASEDIR/jira/main.py "$@"
+else
+    echo "
+    Python virtual environment not found in $VENV. 
+
+    If you have not done so, run 'make setup install' from this project home directory first.
+    "
+fi
+
 
